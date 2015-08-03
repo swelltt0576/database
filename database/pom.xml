@@ -7,16 +7,24 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>database</name>
-	<description>各种数据库使用方�?</description>
+	<developers>
+		<developer>
+			<name>swell</name>
+			<email>s.well.tt@qq.com</email>
+		</developer>
+	</developers>
+	<description>各种数据库使用方法</description>
 	<modules>
-		<module>derby</module>
+		<module>simple-example</module>
+		<module>jdbc-example</module>
+		<module>jpa-example</module>
 	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
 	</properties>
-	
+
 	<build>
 		<plugins>
 			<plugin>

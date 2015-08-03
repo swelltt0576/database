@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+
+-->
+
+<project default="buildschema" basedir=".">
+
+	<!-- Set Properties -->
+	<property environment="env" />
+	<property name="lib.dir" value="${env.derby_home}/lib" />
+
+	<!-- Targets -->
+
+	<target name="buildschema" description="建立数据库表">
+		<echo level="info" message="building schema " />
+		<java classname="org.apache.derby.tools.ij" dir="." fork="true">
+			<classpath>
+				<pathelement path="${lib.dir}/derby.jar" />
+				<pathelement path="${lib.dir}/derbyclient.jar" />
+				<pathelement path="${lib.dir}/derbytools.jar" />
+			</classpath>
+			<sysproperty key="ij.driver" value="org.apache.derby.jdbc.ClientDriver" />
+			<sysproperty key="ij.database" value="jdbc:derby://localhost:1527/jpatest;create=true;user=jpatest;password=jpatest" />
+			<arg value="script.sql" />
+		</java>
+	</target>
+
+
+	<target name="startserver" description="启动DERBY服务器">
+		<echo level="info" message="starting derby server" />
+		<echo level="info" message="java  -Dderby.system.home=. -jar %DERBY_HOME%\lib\derbyrun.jar server start" />
+		<java jar="${env.derby_home}/lib/derbyrun.jar" args="server start" fork="true">
+			<sysproperty key="derby.system.home" value="." />
+		</java>
+	</target>
+	<target name="shutdownserver" description="关闭DERBY服务器">
+		<echo level="info" message="shutdowning derby server" />
+		<echo level="info" message="java  -Dderby.system.home=. -jar %DERBY_HOME%\lib\derbyrun.jar server shutdown -user jpatest -password jpatest" />
+		<java jar="${env.derby_home}/lib/derbyrun.jar" args="server shutdown -user jpatest -password jpatest" fork="true">
+			<sysproperty key="derby.system.home" value="." />
+		</java>
+	</target>
+	<!-- ================================= 
+          target: run              
+         ================================= -->
+	<target name="run" depends="buildschema" >
+		
+	</target>
+
+
+
+</project>

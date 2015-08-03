@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.swell.tutorial</groupId>
+		<artifactId>database</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>simple-example</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>derby</module>
+		<module>hsqldb</module>
+		<module>mysql</module>
+	</modules>
+	<description>各类数据库的简单链接</description>
+</project>
